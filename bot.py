@@ -464,5 +464,8 @@ show_admin_menu = register_admin_handlers(bot)
 
 if __name__ == "__main__":
     print("✅ Бот іске қосылды...")
+    from web_dashboard import run_dashboard
     threading.Thread(target=schedule_reports, daemon=True).start()
+    threading.Thread(target=run_dashboard, kwargs={"port": 5000}, daemon=True).start()
+    print("✅ Веб-дашборд іске қосылды: port 5000")
     bot.infinity_polling()
